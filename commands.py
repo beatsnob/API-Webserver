@@ -25,20 +25,20 @@ def seed_db():
 
     users = [
         User(
+            username = 'admin_user',
             email = 'admin_user@library.com',
             password = bcrypt.generate_password_hash('admin123').decode('utf-8'),
             is_admin = True
         ),
         User(
-            name = 'John Cleese',
-            email = 'someone@spam.com',
-            password = "bcrypt.generate_password_hash('12345').decode('utf-8')"
+            username = 'SammyNandez',
+            email = 'samanthafernandez@library.com',
+            password = bcrypt.generate_password_hash('user123').decode('utf-8'),
+            is_admin = False
         )
     ]
-
     books = [
         Book(
-            id = '',
             title = 'The Earthsea Quartet',
             author = 'Ursula Le Guin',
             type = 'Fiction',
@@ -106,9 +106,8 @@ def seed_db():
         Book(
             title = 'Squirrel Seeks Chipmunk',
             author = 'David Sedaris',
-            type = 'Fiction',
-        ),
-
+            type = 'Fiction'
+        )
     ]
 
     db.session.add_all(books)

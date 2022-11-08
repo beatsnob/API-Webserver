@@ -1,7 +1,7 @@
 from db import db, ma
 
 class User(db.Model):
-    __tablename__ = 'user'
+    __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, nullable=False, unique=True)
@@ -11,5 +11,5 @@ class User(db.Model):
 
 class UserSchema(ma.Schema):
     class Meta:
-        fields = ('id', 'username', 'email')
+        fields = ('id', 'username', 'email', 'password', 'is_admin')
         ordered = True
