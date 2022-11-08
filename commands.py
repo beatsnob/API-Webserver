@@ -2,6 +2,7 @@
 from main import Flask
 from models.book import Book
 from models.user import User
+from models.collection import Collection
 from db import db
 from flask import Blueprint
 from flask_bcrypt import Bcrypt
@@ -110,7 +111,25 @@ def seed_db():
         )
     ]
 
-    db.session.add_all(books)
+
     db.session.add_all(users)
+    db.session.add_all(books)
+
+
+
+
+
+
+    collections = [
+        Collection(
+            book = books[0],
+            user_id = users[0],
+            name = 'Wishlist'
+        )
+    ]
+
+
+
+    db.session.add_all(collections)
     db.session.commit()
     print('Tables seeded')
