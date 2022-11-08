@@ -108,27 +108,24 @@ def seed_db():
             title = 'Squirrel Seeks Chipmunk',
             author = 'David Sedaris',
             type = 'Fiction'
+        ),
+        Book(
+            title = 'Lapvona',
+            author = 'Ottessa Moshfegh',
+            type = 'Fiction'
         )
     ]
-
 
     db.session.add_all(users)
     db.session.add_all(books)
 
-
-
-
-
-
     collections = [
         Collection(
-            book = books[0],
-            user_id = users[0],
+            book_id = books[1],
+            user_id = users[1],
             name = 'Wishlist'
         )
     ]
-
-
 
     db.session.add_all(collections)
     db.session.commit()
