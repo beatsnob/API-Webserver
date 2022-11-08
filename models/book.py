@@ -4,14 +4,11 @@ class Book(db.Model):
     __tablename__ = 'books'
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String)
-    author = db.Column(db.String)
-    year = db.Column(db.Integer)
-    genre = db.Column(db.String)
-    rating = db.Column(db.Integer)
-    read_by = db.Column(db.String)
+    title = db.Column(db.String, nullable=False)
+    author = db.Column(db.String, nullable=False)
+    type = db.Column(db.String)
 
 class BookSchema(ma.Schema):
     class Meta:
-        fields = ('id', 'title', 'author', 'year', 'genre', 'rating', 'read_by')
+        fields = ('id', 'title', 'author', 'type')
         ordered = True
