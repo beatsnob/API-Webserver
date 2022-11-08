@@ -1,0 +1,19 @@
+{
+    "userTable" : {
+        "userID": 1234,
+        "username": "user",
+        "email": "user@example.com"
+    },
+    "bookTable" : {
+        "bookID": 10,
+        "title": "Lapvona",
+        "author": "Otessa Moshfegh",
+        "type": "fiction"
+    },
+    "bookTable" : {
+        "bookID": 11,
+        "title": "A Little Life",
+        "author": "Hanya Yanagihara",
+        "type": "fiction"
+    }
+}

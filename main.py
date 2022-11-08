@@ -13,9 +13,15 @@ def create_app():
 
     #app.register_blueprint()
 
+    @app.cli.command('create')
+    def create_db():
+        db.create_all()
+        print('Tables created')
+    
+    @app.cli.command('drop')
+    def drop_db():
+        db.drop_all()
+        print("Tables dropped")
+
     return app
 
-@app.cli.command('create')
-def create_db():
-    db.create_all()
-    print("Tables created")

@@ -7,10 +7,11 @@ class Book(db.Model):
     title = db.Column(db.String)
     author = db.Column(db.String)
     year = db.Column(db.Integer)
+    genre = db.Column(db.String)
     rating = db.Column(db.Integer)
     read_by = db.Column(db.String)
 
 class BookSchema(ma.Schema):
     class Meta:
-        fields = ('id', 'title', 'author', 'year', 'rating', 'read_by')
+        fields = ('id', 'title', 'author', 'year', 'genre', 'rating', 'read_by')
         ordered = True
