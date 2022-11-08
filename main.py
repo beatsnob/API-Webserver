@@ -1,6 +1,7 @@
 from flask import Flask
 from db import db, ma
 import os
+from commands import db_commands
 
 def create_app():
     app = Flask(__name__)
@@ -11,17 +12,6 @@ def create_app():
     db.init_app(app)
     ma.init_app(app)
 
-    #app.register_blueprint()
-
-    @app.cli.command('create')
-    def create_db():
-        db.create_all()
-        print('Tables created')
-    
-    @app.cli.command('drop')
-    def drop_db():
-        db.drop_all()
-        print("Tables dropped")
+    app.register_blueprint(db_commands)
 
     return app
-
