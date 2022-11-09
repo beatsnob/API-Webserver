@@ -118,11 +118,14 @@ def seed_db():
 
     db.session.add_all(users)
     db.session.add_all(books)
+    db.session.commit()
 
     # someBook = db.Book.findByName("Harry Potter")
-    one_book = db.select(Book).filter_by(id=4)
+    one_book = db.session.execute(db.select(Book.id).filter_by(id=4)).one()
+    print (one_book)
     # someUser = db.User.findByName("Mostafa")
-    one_user = db.select(User).filter_by(id=2)
+    one_user = db.session.execute(db.select(User.id).filter_by(id=1)).one()
+    print (one_user)
 
     #Collection(book_id=one_book.id, user_id=one_user.id, name="Wishlist")
 
