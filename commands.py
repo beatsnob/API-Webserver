@@ -119,10 +119,18 @@ def seed_db():
     db.session.add_all(users)
     db.session.add_all(books)
 
+    # someBook = db.Book.findByName("Harry Potter")
+    one_book = db.select(Book).filter_by(id=4)
+    # someUser = db.User.findByName("Mostafa")
+    one_user = db.select(User).filter_by(id=2)
+
+    #Collection(book_id=one_book.id, user_id=one_user.id, name="Wishlist")
+
+
     collections = [
         Collection(
-            book_id = books[1],
-            user_id = users[1],
+            book_id = one_book.id,
+            user_id = one_user.id,
             name = 'Wishlist'
         )
     ]

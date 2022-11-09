@@ -2,6 +2,8 @@ from flask import Flask
 from db import db, ma
 import os
 from commands import db_commands
+from controllers.collections_controller import collection_bp
+from controllers.users_controller import users_bp
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 
 def create_app():
@@ -17,5 +19,7 @@ def create_app():
     ma.init_app(app)
 
     app.register_blueprint(db_commands)
+    app.register_blueprint(collection_bp)
+    app.register_blueprint(users_bp)
 
     return app
