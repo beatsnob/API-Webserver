@@ -4,7 +4,7 @@ from models.user import User, UserSchema
 
 user_bp = Blueprint('user', '__name__', url_prefix='/user')
 
-user_bp.route('/')
+@user_bp.route('/')
 def all_collections():
     stmt = db.select(User)
     users = db.session.scalars(stmt)
