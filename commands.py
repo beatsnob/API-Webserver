@@ -36,6 +36,12 @@ def seed_db():
             email = 'samanthafernandez@library.com',
             password = bcrypt.generate_password_hash('user123').decode('utf-8'),
             is_admin = False
+        ),
+        User(
+            username = 'EmCee',
+            email = 'emilychantler@library.com',
+            password = bcrypt.generate_password_hash('user321').decode('utf-8'),
+            is_admin = False
         )
     ]
     books = [
@@ -120,15 +126,9 @@ def seed_db():
     db.session.add_all(books)
     db.session.commit()
 
-    # someBook = db.Book.findByName("Harry Potter")
     one_book = db.session.execute(db.select(Book.id).filter_by(id=4)).one()
-    print (one_book)
-    # someUser = db.User.findByName("Mostafa")
+    
     one_user = db.session.execute(db.select(User.id).filter_by(id=1)).one()
-    print (one_user)
-
-    #Collection(book_id=one_book.id, user_id=one_user.id, name="Wishlist")
-
 
     collections = [
         Collection(
@@ -136,6 +136,7 @@ def seed_db():
             user_id = one_user.id,
             name = 'Wishlist'
         )
+    
     ]
 
     db.session.add_all(collections)
