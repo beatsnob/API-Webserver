@@ -1,3 +1,4 @@
+from marshmallow import fields
 from .user import User
 from .book import Book
 from db import db, ma
@@ -14,3 +15,4 @@ class CollectionSchema(ma.Schema):
     class Meta:
         fields = ('id', 'user id', 'book id', 'name')
         ordered = True
+    collection = fields.Nested('CollectionSchema')

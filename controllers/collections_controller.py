@@ -3,7 +3,7 @@ from flask import Blueprint, jsonify, request
 from db import db
 from models.collection import Collection, CollectionSchema
 from models.user import User
-from models.book import Book
+from models.book import Book, BookSchema
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 
 collection_bp = Blueprint('collections', '__name__', url_prefix='/collections')
@@ -55,10 +55,10 @@ def create():
     db.session.add(new_collection)
     db.session.commit()
     return {
-        'message': f'This is your {new_collection.name} collection', 
+        'message': f'This is your {new_collection.name} collection',
         'token':token,
-        'collection':CollectionSchema(many=False).dump(new_collection)
-
+        'collection':CollectionSchema(many=False).dump(new_collection),
+        'book':BookSchema(many=False).dump(Book.title)
     }
     
     
