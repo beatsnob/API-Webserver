@@ -15,4 +15,3 @@ class CollectionSchema(ma.Schema):
     class Meta:
         fields = ('id', 'user id', 'book id', 'name')
         ordered = True
-    collection = fields.Nested('CollectionSchema')
