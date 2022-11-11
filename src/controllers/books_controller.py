@@ -1,6 +1,7 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from db import db
 from models.book import Book, BookSchema
+
 
 book_bp = Blueprint('books', '__name__', url_prefix='/book')
 
@@ -18,3 +19,14 @@ def one_book(id):
         return BookSchema().dump(book)
     else:
         return{'error': f'Book not found with {id}'}, 404
+
+@book_bp.route('/authors')
+def all_authors():
+    book = Book.query.with_entities(Book.author).all()
+    print (book)
+    return json.dumps(book)
+
+
+    # stmt = db.select(Book.author)
+    # book = db.session.scalars(stmt)
+    # return BookSchema(many=True).dump(book)
