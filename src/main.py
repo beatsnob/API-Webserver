@@ -1,11 +1,11 @@
+import os
 from flask import Flask
 from db import db, ma
-import os
 from commands import db_commands
 from controllers.collections_controller import collection_bp
 from controllers.users_controller import user_bp
 from controllers.books_controller import book_bp
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+from flask_jwt_extended import JWTManager
 
 def create_app():
     app = Flask(__name__)

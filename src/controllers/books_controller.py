@@ -1,6 +1,9 @@
 from flask import Blueprint, request, jsonify
 from db import db
 from models.book import Book, BookSchema
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+from models.user import User
+from datetime import timedelta
 
 
 book_bp = Blueprint('books', '__name__', url_prefix='/book')
@@ -23,10 +26,25 @@ def one_book(id):
 @book_bp.route('/authors')
 def all_authors():
     book = Book.query.with_entities(Book.author).all()
-    print (book)
-    return json.dumps(book)
+    authors = []
+    for row in book:
+        authors.append(row.author)
+    return authors
 
+@book_bp.route('/add', methods=['POST'])
+@jwt_required()
+def add():
+    new_book = Book(
+        title = request.json['Title'],
+        author = request.json['Author'],
+        type = request.json['Type']
+    )
 
-    # stmt = db.select(Book.author)
-    # book = db.session.scalars(stmt)
-    # return BookSchema(many=True).dump(book)
+    token = create_access_token(identity=str(User.id), expires_delta=timedelta(days=1))
+
+    db.session.add(new_book)
+    db.session.commit()
+    return {
+        'message': f'You have added {new_book.title} by {new_book.author}',
+        'token': token
+    }
