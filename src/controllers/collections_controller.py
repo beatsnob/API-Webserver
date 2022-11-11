@@ -47,6 +47,6 @@ def create():
 @collection_bp.route('/my-collections')
 @jwt_required()
 def my_collections():
-    stmt = db.select.filter_by(User.id)
+    stmt = db.select(Collection)
     collection = db.session.scalars(stmt)
     return CollectionSchema(many=True).dump(collection)

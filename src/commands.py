@@ -1,11 +1,11 @@
-# from directory.file import Whatever 
+from flask_bcrypt import Bcrypt
+from flask import Blueprint
 from main import Flask
 from models.book import Book
 from models.user import User
 from models.collection import Collection
 from db import db
-from flask import Blueprint
-from flask_bcrypt import Bcrypt
+
 
 app = Flask(__name__)
 db_commands = Blueprint('db', __name__)
