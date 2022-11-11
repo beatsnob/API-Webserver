@@ -1,6 +1,4 @@
-from marshmallow import fields
 from db import db, ma
-
 
 class Book(db.Model):
     __tablename__ = 'books'

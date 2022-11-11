@@ -127,7 +127,7 @@ def seed_db():
     db.session.commit()
 
     one_book = db.session.execute(db.select(Book.id).filter_by(id=4)).one()
-    
+
     one_user = db.session.execute(db.select(User.id).filter_by(id=1)).one()
 
     collections = [
@@ -136,7 +136,7 @@ def seed_db():
             user_id = one_user.id,
             name = 'Wishlist'
         )
-    
+
     ]
 
     db.session.add_all(collections)

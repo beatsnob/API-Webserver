@@ -2,7 +2,6 @@ from datetime import timedelta
 from flask import Blueprint, request, Flask
 from flask_bcrypt import Bcrypt
 from sqlalchemy.exc import IntegrityError
-from sqlalchemy import update
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from db import db
 from models.user import User, UserSchema

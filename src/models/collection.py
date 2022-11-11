@@ -1,6 +1,5 @@
-from marshmallow import fields
-from .user import User
-from .book import Book
+from models.book import Book
+from models.user import User
 from db import db, ma
 
 class Collection(db.Model):

@@ -37,7 +37,7 @@ def create():
 
     db.session.add(new_collection)
     db.session.commit()
-    
+
     return {
         'message': f'This is your {new_collection.name} collection',
         'token':token,
