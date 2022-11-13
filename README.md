@@ -84,7 +84,7 @@ is a 'POST' endpoint that will allow a logged in user to add a book to the list.
 --------------  
 This is the Entity Relationship Diagram for the project with the normalised relations depicted and how they relate to each other.
 
-![library ERD](docs/library_ERD.png)  
+![library ERD](docs/library_ERD.png)
 
 ### Models  
 
